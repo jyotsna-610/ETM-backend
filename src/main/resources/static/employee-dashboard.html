@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+        }
+
+        header {
+            background: #173b70;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 85%;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            width: 220px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px #cccccc;
+        }
+
+        h2 {
+            color: #173b70;
+        }
+
+        button {
+            background: #173b70;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .logout {
+            background: #c0392b;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Employee Task and Leave Management System</h1>
+    <p>Employee Dashboard</p>
+</header>
+
+<div class="container">
+    <h2>Welcome, Employee!</h2>
+    <p>Manage your tasks and leave requests here.</p>
+
+    <div class="cards">
+        <div class="card">
+            <h2>My Tasks</h2>
+            <p>View your assigned tasks.</p>
+            <button onclick="alert('Tasks feature coming soon!')">
+                View Tasks
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>Apply for Leave</h2>
+            <p>Submit a leave request.</p>
+            <button onclick="alert('Leave application coming soon!')">
+                Apply Leave
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>Leave Status</h2>
+            <p>Check your leave status.</p>
+            <button onclick="alert('Leave status coming soon!')">
+                View Status
+            </button>
+        </div>
+    </div>
+
+    <button class="logout"
+        onclick="window.location.href='/index.html'">
+        Logout
+    </button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Task and Leave Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            background: #173b65;
+            color: white;
+            padding: 25px;
+        }
+
+        .container {
+            margin: 50px auto;
+            max-width: 650px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        button {
+            background: #1769aa;
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            margin: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #104b7b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Employee Task and Leave Management System</h1>
+    </header>
+
+    <div class="container">
+        <h2>Welcome!</h2>
+
+        <p>Manage employee tasks and leave requests in one place.</p>
+
+        <div class="buttons">
+            <button onclick="window.location.href='/employee-login'">
+    Employee Login
+</button>
+           <button onclick="window.location.href='/admin-login'">
+    Admin Login
+</button>
+
+           <button onclick="window.location.href='/tasks'">
+    Manage Tasks
+</button>
+         
+         <button onClick="window.location.href='/apply-leave'">
+            Manage Leaves
+         </button>"
+    </div>
+
+</body>
+</html>

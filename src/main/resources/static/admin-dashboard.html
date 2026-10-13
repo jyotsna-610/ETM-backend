@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 30px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px #0001;
+        }
+        h1 { color: #1d4ed8; }
+        button {
+            background: #dc2626;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+                <div id="adminContent">
+            <h2>All Tasks</h2>
+            <table border="1" width="100%" id="taskTable">
+                <tr><th>ID</th><th>Title</th><th>Description</th></tr>
+            </table>
+            <br><br>
+            <h2>All Leave Requests</h2>
+            <table border="1" width="100%" id="leaveTable">
+                <tr><th>Emp ID</th><th>Leave Type</th><th>Reason</th><th>Status</th></tr>
+            </table>
+        </div>
+        </div> <script>
+            // Backend nundi Tasks techukovadam
+            fetch('/api/tasks')
+            .then(res => res.json())
+            .then(tasks => {
+                tasks.forEach(t => {
+                    let row = `<tr><td>${t.id}</td><td>${t.title}</td><td>${t.description}</td></tr>`;
+                    document.getElementById('taskTable').innerHTML += row;
+                });
+            });
+
+            // Backend nundi Leaves techukovadam
+            fetch('/api/leaves')
+            .then(res => res.json())
+            .then(leaves => {
+                leaves.forEach(l => {
+                    let row = `<tr><td>${l.employeeId}</td><td>${l.leaveType}</td><td>${l.reason}</td><td>${l.status}</td></tr>`;
+                    document.getElementById('leaveTable').innerHTML += row;
+                });
+            });
+        </script>
+        <p>Login successful!</p>
+        <p>Welcome to the Admin Panel.</p>
+        <button onclick="window.location.href='/admin-login.html'">
+            Back to Login
+        </button>
+    </div>
+</body>
+</html>

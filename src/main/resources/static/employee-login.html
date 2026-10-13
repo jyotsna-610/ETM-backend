@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Login</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef3f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .login-box {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #cccccc;
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #234b78;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            background: #3984c6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #234b78;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <h2>Employee Login</h2>
+
+        <form onsubmit="return employeeLogin(event)">
+
+            <input
+                type="text"
+                id="employeeId"
+                placeholder="Enter Employee ID"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                required
+            >
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <a href="/">Back to Home</a>
+
+    </div>
+
+<script>
+function employeeLogin(event) {
+    event.preventDefault();
+
+    const employeeId = document.getElementById("employeeId").value;
+    const password = document.getElementById("password").value;
+
+    if (employeeId === "EMP001" && password === "emp123") {
+        alert("Employee Login Successful!");
+       } else {   
+        alert("Invalid Employee ID or Password!");
+    }
+}
+</script>
+
+</body>
+</html>

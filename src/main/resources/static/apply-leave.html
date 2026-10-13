@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Leave</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+        }
+
+        header {
+            background: #173b70;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            max-width: 450px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #173b70;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #173b70;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Employee Task and Leave Management System</h1>
+</header>
+
+<div class="container">
+    <h2>Apply for Leave</h2>
+
+    <form id="leaveForm">
+        <label for="employeeId">Employee ID</label>
+        <input type="text" id="employeeId" required>
+
+        <label for="leaveType">Leave Type</label>
+        <select id="leaveType" required>
+            <option value="">Select Leave Type</option>
+            <option>Casual Leave</option>
+            <option>Sick Leave</option>
+            <option>Personal Leave</option>
+        </select>
+
+        <label for="fromDate">From Date</label>
+        <input type="date" id="fromDate" required>
+
+        <label for="toDate">To Date</label>
+        <input type="date" id="toDate" required>
+
+        <label for="reason">Reason</label>
+        <textarea id="reason" rows="3" required></textarea>
+
+        <button type="submit">Submit Leave Request</button>
+    </form>
+
+    <a class="back" href="/employee-dashboard.html">Back to Dashboard</a>
+</div>
+
+<script>
+document.getElementById("leaveForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const fromDate = document.getElementById("fromDate").value;
+    const toDate = document.getElementById("toDate").value;
+
+    if (toDate < fromDate) {
+        alert("To Date must be on or after From Date!");
+        return;
+    }
+
+    const leaveRequest = {
+        employeeId: document.getElementById("employeeId").value,
+        leaveType: document.getElementById("leaveType").value,
+        fromDate: fromDate,
+        toDate: toDate,
+        reason: document.getElementById("reason").value
+    };
+
+    try {
+        const response = await fetch("/api/leaves", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(leaveRequest)
+        });
+
+        if (response.ok) {
+            alert("Leave request submitted successfully!");
+            document.getElementById("leaveForm").reset();
+        } else {
+            const error = await response.text();
+            alert("Failed to submit leave request: " + error);
+        }
+    } catch (error) {
+        alert("Could not connect to the server. Please try again.");
+        console.error(error);
+    }
+});
+</script>
+
+
+
+</body>
+</html>
